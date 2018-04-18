@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--将第三方框架的核心组件放在Spring容器，让Spring创建这个组件的对象；  -->
+	<!--1、创建SqlSessionFactory相关的  -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 指定MyBatis配置文件位置 -->
+		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"></property>
+		<!--#{组件id}  -->
+		<property name="dataSource" value="#{dataSource}"></property>
+		<!-- 指定Sql映射文件的位置 -->
+		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"></property>
+	</bean>
+	
+	<!--2、将所有Mapper的动态代理实现放在容器中，方便自动注入  -->
+	
+	<!-- <mybatis-spring:scan base-package="com.atguigu.scw.common.mapper"/> -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定mapper接口所在的包 -->
+		<property name="basePackage" value="com.atguigu.scw.common.mapper"></property>
+	</bean>
+
+</beans>

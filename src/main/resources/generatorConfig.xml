@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<!-- 
+	targetRuntime:
+		MyBatis3\MyBatis3Simple
+	 -->
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	<commentGenerator>
+  		<property name="suppressAllComments" value="true"/>
+  	</commentGenerator>
+  	<!-- 数据库连接信息 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/scw"
+        userId="root"
+        password="123456">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- 指定javaBean生成的地方 -->
+    <javaModelGenerator targetPackage="com.atguigu.scw.common.bean" 
+    	targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- 指定XMLMapper的位置 -->
+    <sqlMapGenerator targetPackage="mybatis.mapper"  
+    	targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!--指定Dao接口的地方  -->
+    <javaClientGenerator type="XMLMAPPER" 
+    	targetPackage="com.atguigu.scw.common.mapper"  
+    	targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+	<!-- 需要逆向的表 -->
+	<!-- tableName：表名   domainObjectName：javaBean的名
+	不指定domainObjectName的情况下默认会按照驼峰命名法将表名转为JavaBean的名
+	t_account_type_cert   TAccountTypeCert：
+	-->
+	<table tableName="t_member_process"></table>
+<!--     <table tableName="t_account_type_cert"></table> -->
+<!--     <table tableName="t_advertisement"></table> -->
+<!--     <table tableName="t_cert"></table> -->
+<!--     <table tableName="t_dictionary"></table> -->
+<!--     <table tableName="t_member"></table> -->
+<!--     <table tableName="t_member_address"></table> -->
+<!--     <table tableName="t_member_cert"></table> -->
+<!--     <table tableName="t_member_project_follow"></table> -->
+<!--     <table tableName="t_message"></table> -->
+<!--     <table tableName="t_order"></table> -->
+<!--     <table tableName="t_param"></table> -->
+<!--     <table tableName="t_permission"></table> -->
+<!--     <table tableName="t_project"></table> -->
+<!--     <table tableName="t_project_tag"></table> -->
+<!--     <table tableName="t_project_type"></table> -->
+<!--     <table tableName="t_return"></table> -->
+<!--     <table tableName="t_role"></table> -->
+<!--     <table tableName="t_role_permission"></table> -->
+<!--     <table tableName="t_tag"></table> -->
+<!--     <table tableName="t_type"></table> -->
+<!--     <table tableName="t_user"></table> -->
+<!--     <table tableName="t_user_role"></table> -->
+    
+
+  </context>
+</generatorConfiguration>
